@@ -71,4 +71,7 @@ def create_commendation(child_name, subject):
         print("Обеспечьте уникальность имени.")
     except Schoolkid.DoesNotExist:
         print("В имени допущена ошибка.")
-        print("В базе данных нет ученика с таким именем")
+        print("В базе данных нет ученика с таким именем.")
+    except IndexError:
+        print("Неверно указано название предмета.")
+        print("Исправьте ошибку в названии предмета.")
