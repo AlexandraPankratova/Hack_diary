@@ -3,13 +3,17 @@ from datacenter.models import \
     Chastisement, Mark, Schoolkid, Lesson, Commendation
 
 
-def remove_chestiments(child):
+def remove_chestiments(child_name):
+    schoolkids = Schoolkid.objects.all()
+    child = schoolkids.get(full_name__contains=child_name)
     chastiments = Chastisement.objects.all()
     this_child_chastiments = chastiments.filter(schoolkid=child)
     this_child_chastiments.delete()
 
 
-def fix_marks(child):
+def fix_marks(child_name):
+    schoolkids = Schoolkid.objects.all()
+    child = schoolkids.get(full_name__contains=child_name)
     marks = Mark.objects.all()
     this_child_marks = marks.filter(schoolkid=child)
     bad_marks = this_child_marks.filter(points__in=[2, 3])
