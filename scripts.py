@@ -31,7 +31,7 @@ def create_commendation(child_name, subject):
         "Так держать!",
         "Я тобой горжусь!",
         "Я вижу, как ты стараешься!",
-        "Я поражен",
+        "Я поражен!",
     ]
     schoolkids = Schoolkid.objects.all()
     child = schoolkids.get(full_name__contains=child_name)
