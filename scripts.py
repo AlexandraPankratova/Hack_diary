@@ -23,6 +23,16 @@ def fix_marks(child_name):
 
 
 def create_commendation(child_name, subject):
+    commendations = [
+        "Молодец!",
+        "Отлично!",
+        "Прекрасно!",
+        "Талантливо!",
+        "Так держать!",
+        "Я тобой горжусь!",
+        "Я вижу, как ты стараешься!",
+        "Я поражен",
+    ]
     schoolkids = Schoolkid.objects.all()
     child = schoolkids.get(full_name__contains=child_name)
     lessons = Lesson.objects.all()
@@ -35,7 +45,7 @@ def create_commendation(child_name, subject):
     )
     current_lesson = choice(this_child_subject_lessons)
     Commendation.objects.create(
-        text="Хвалю!",
+        text=choice(commendations),
         created=current_lesson.date,
         schoolkid=child,
         subject=current_lesson.subject,
