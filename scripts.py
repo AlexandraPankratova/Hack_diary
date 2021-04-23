@@ -5,8 +5,7 @@ from datacenter.models import \
 
 def remove_chestiments(child_name):
     try:
-        schoolkids = Schoolkid.objects.all()
-        child = schoolkids.get(full_name__contains=child_name)
+        child = Schoolkid.objects.get(full_name__contains=child_name)
         chastiments = Chastisement.objects.all()
         this_child_chastiments = chastiments.filter(schoolkid=child)
         this_child_chastiments.delete()
@@ -20,8 +19,7 @@ def remove_chestiments(child_name):
 
 def fix_marks(child_name):
     try:
-        schoolkids = Schoolkid.objects.all()
-        child = schoolkids.get(full_name__contains=child_name)
+        child = Schoolkid.objects.get(full_name__contains=child_name)
         marks = Mark.objects.all()
         this_child_marks = marks.filter(schoolkid=child)
         bad_marks = this_child_marks.filter(points__in=[2, 3])
@@ -48,8 +46,7 @@ def create_commendation(child_name, subject):
             "Я вижу, как ты стараешься!",
             "Я поражен!",
         ]
-        schoolkids = Schoolkid.objects.all()
-        child = schoolkids.get(full_name__contains=child_name)
+        child = Schoolkid.objects.get(full_name__contains=child_name)
         lessons = Lesson.objects.all()
         this_child_lessons = lessons.filter(
             year_of_study=child.year_of_study,
